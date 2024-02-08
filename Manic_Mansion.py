@@ -156,15 +156,7 @@ class Sheep(SpillObject):
         super().__init__(x, y, color)
 
         self.carry = False
-
-        # Sjekker om saueobjektene er oppå hverandre
-        overlapping = False
-        for sh in sheeps:
-            if pg.Rect(sh.x, sh.y, w, w).colliderect(pg.Rect(x, y, w, w)):
-                overlapping = True
-                break
-        if overlapping != True and len(sheeps) < 3:
-            sheeps.append(self)
+        sheeps.append(self)
 
     def draw(self):
         super().draw()
@@ -200,15 +192,7 @@ for i in range(3):
 class Object(SpillObject):
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        
-        # Sjekker om hindrene er oppå hverandre
-        overlapping = False
-        for ob in obsts:
-            if pg.Rect(ob.x, ob.y, w, w).colliderect(pg.Rect(x, y, w, w)):
-                overlapping = True
-                break
-        if overlapping != True and len(obsts) < 3:
-            obsts.append(self)
+        obsts.append(self)
         
     def draw(self):
         pg.draw.rect(surface, self.color, [self.x, self.y, w, w])
